@@ -36,10 +36,10 @@ module RubyXlPoi
       # Ensures that storage space for a cell with +row_index+ and +column_index+
       # exists in +rows+ arrays, growing them up if necessary.
       def ensure_cell_exists(row_index, column_index = 1)
-        validate_nonnegative(row_index - 1)
-        validate_nonnegative(column_index - 1)
+        validate_nonnegative(row_index)
+        validate_nonnegative(column_index)
 
-        rows[row_index - 1] || add_row(row_index - 1)
+        rows[row_index] || add_row(row_index)
       end
 
       def validate_nonnegative(row_or_col)
