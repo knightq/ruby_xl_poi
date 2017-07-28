@@ -27,20 +27,6 @@ module RubyXlPoi
         type == :numeric
       end
 
-      def change_contents(data, _formula = nil)
-        type = if !data || data == ''
-                 :blank
-               elsif (data.is_a? Integer) || (data.is_a? Float)
-                 :numeric
-               elsif data.is_a?(TrueClass) || data.is_a?(FalseClass)
-                 :boolean
-               else
-                 :string
-               end
-        data = @workbook.date_to_num(data) if data.is_a?(Date) || data.is_a?(DateTime)
-        j_cell.send("setCell#{type.capitalize}Value", data)
-      end
-
       def val
         # type = self.class.symbol_type(sheet.book._evaluator.evaluateFormulaCell(cell))
         type_pref = formula? ? :numeric : type
@@ -58,6 +44,10 @@ module RubyXlPoi
 
       def val=(value)
         j_cell.setCellValue(value)
+      end
+
+      def change_contents(data, _formula = nil)
+        j_cell.send('setCellValue', data)
       end
 
       def self.symbol_type(constant)
