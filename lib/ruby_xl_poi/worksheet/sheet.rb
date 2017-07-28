@@ -17,7 +17,7 @@ module RubyXlPoi
       end
 
       def create_row(index)
-        Worksheet::Row.new(self, j_sheet.createRow(index), index)
+        Worksheet::Row.new(self, j_sheet.createRow(index - 1), index)
       end
 
       # Inserts row at row_index, pushes down, copies style from below
