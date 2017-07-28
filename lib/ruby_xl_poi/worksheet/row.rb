@@ -35,6 +35,10 @@ module RubyXlPoi
 
       def copy_row_from(row)
         j_row.copyRowFrom(row.j_row, self.class.cell_policy.new)
+        (0..j_row.getLastCellNum.to_i).each do |col|
+          j_cell = j_row.getCell(col)
+          cells.store col + 1, Worksheet::Cell.new(self, j_cell, col + 1) if j_cell
+        end
       end
 
       def inspect
