@@ -1,0 +1,30 @@
+AllCops:
+  Include:
+    - Rakefile
+  Exclude:
+    - ruby_xl_poi.gemspec
+    - vendor/**/*
+    - test/**/*
+  TargetRubyVersion: 2.3
+AccessorMethodName:
+  Enabled: false
+ClassLength:
+  Enabled: false
+CyclomaticComplexity:
+  Enabled: false
+Documentation:
+  Enabled: false
+EmptyLinesAroundModuleBody:
+  Enabled: false
+Encoding:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+  Max: 150
+MethodLength:
+  Enabled: false
+Layout/IndentationWidth:
+  Width: 2
+Style/FileName:
+  Exclude:
+    - Rakefile
