@@ -20,7 +20,7 @@ module RubyXlPoi
       def cell(col)
         return cells[col] if cells[col]
         j_cell = j_row.getCell(col)
-        cells.store col, Cell.new(j_cell, self) if j_cell
+        cells.store col, Cell.new(self, j_cell, col) if j_cell
       end
 
       def duplicate_below
