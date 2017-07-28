@@ -12,7 +12,9 @@ require 'ruby_xl_poi/worksheet/cell'
 
 module RubyXlPoi
   def self.init
-    libs = Dir.glob("#{Dir.pwd}/vendor/java/apache/*.jar").join(':')
+    # libs = Dir.glob("#{Dir.pwd}/vendor/java/apache/*.jar").join(':')
+    # libs = Dir.glob($:.grep(/ruby_xl_poi/).first + '/../vendor/java/apache/*.jar').join(':')
+    libs = %w[commons-collections4 curvesapi poi poi-ooxml poi-ooxml-schemas xmlbeans].map { |l| "#{File.dirname(__FILE__)}/../vendor/java/apache/#{l}.jar" }.join(':')
     Rjb.load(libs, ['-Xmx512M'])
 
     @cell_class = Rjb.import('org.apache.poi.ss.usermodel.Cell')
